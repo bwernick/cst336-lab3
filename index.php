@@ -26,7 +26,7 @@
       //suit: clubs = 1, diamonds = 2, hearts = 3, spades = 4
       //value: 1-13 maps to Ace through King
       for($i = 0; $i < 52; $i++)
-        $cards["$i"] = array("value"=>(int)($i/13)+1, "suit"=>$i%13);
+        $cards["$i"] = array("value"=>$i%13, "suit"=>(int)($i/13)+1);
       var_dump($cards);//test line
       echo "<br><br>";
       

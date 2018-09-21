@@ -66,7 +66,7 @@
         return $score;
       }
       
-      function showPlayer($num, $name){
+      function showPlayer($name){
         echo "<figure><img src='img/players/$name.png' alt = 'player $name'><figcaption>$name</figcaption></figure>"; //show player image with name below them
       }
       
@@ -92,17 +92,17 @@
           echo "<div class='col'>"; //one player per loop
             //player icon and name, to be on the left
             echo "<div class='row'>";
-            showPlayer($i+1, $playerNames[$i]);
+            showPlayer($playerNames[$i]);
             echo "</div>";
             
             //player hand, in the middle
             echo "<div class='row'>";
-            showHand($i+1);
+            showHand($i);
             echo "</div>";
             
             //score, on the right
             echo "<div class='row'>";
-            $score.$i = getScore(($player . ($i+1)));
+            $score.$i = getScore(($player . ($i)));
             echo "Score: $score.$i";
             echo "</div>";
           echo "</div>";

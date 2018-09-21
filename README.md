@@ -1,4 +1,4 @@
-# cst336-lab3
+# Modified Readme lab3
 
 ___________
 |         |

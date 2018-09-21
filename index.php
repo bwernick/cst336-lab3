@@ -12,43 +12,62 @@
     <hr>
     
     <?php
-      //Set up deck order and cards array
-      $shuff = array();//$shuff determines the order in which cards will be drawn
-      for($i = 0; $i < 52; $i++)
-        $shuff[] = $i;
-      var_dump($shuff);//test line
-      echo "<br><br>";
-      
-      for($i = 0; $i < 52; $i++){//Fisher-Yates shuffle
-        $j = rand(0,51);
-        $temp = $shuff[$i];
-        $shuff[$i] = $shuff[$j];
-        $shuff[$j] = $temp;
+      function play(){
+          
+        //Set up deck order and cards array
+        $shuff = array();//$shuff determines the order in which cards will be drawn
+        for($i = 0; $i < 52; $i++)
+          $shuff[] = $i;
+        var_dump($shuff);//test line
+        echo "<br><br>";
+        
+        for($i = 0; $i < 52; $i++){//Fisher-Yates shuffle
+          $j = rand(0,51);
+          $temp = $shuff[$i];
+          $shuff[$i] = $shuff[$j];
+          $shuff[$j] = $temp;
+        }
+        /*var_dump($shuff);//test line
+        echo "<br><br>";*/
+        
+        $cards = array();//$cards implements value & suit for each card
+        //Find the info for a card by knowing its number, applying divison and mod
+        //suit: clubs = 0, diamonds = 1, hearts = 2, spades = 3
+        //value: 1-13 maps to Ace through King
+        for($i = 0; $i < 52; $i++)
+          $cards["$i"] = array("value"=>$i%13+1, "suit"=>(int)($i/13));
+        /*var_dump($cards);//test line
+  
+        echo "<br><br>";*/
+        
+  
+        $playerNames = array("Thanos", "Pepe", "Ainz", "God"); //player names
+        $Thanos = array();
+        $Pepe = array();
+        $Ainz = array();
+        $God = array();
+        $playerHands = array($Thanos, $Pepe, $Ainz, $God);
+        
+        //Deal hands
+        $shuffCount = 0;
+        for($i = 0; $i < 4; $i++){
+          while(getScore($playerHands[$playerNames[$i]]) < 37){
+            array_push($playerHands[$playerNames[$i]], $cards[$shuff[$shuffCount]]);
+            $shuffCount++;
+          }
+        }
+              
+        //Print results
+        //Print table of players and their scores
+        printTable();
+        
+        getWinner();
+        
       }
-      var_dump($shuff);//test line
-      echo "<br><br>";
-      
-      $cards = array();//$cards implements value & suit for each card
-      //Find the info for a card by knowing its number, applying divison and mod
-      //suit: clubs = 0, diamonds = 1, hearts = 2, spades = 3
-      //value: 1-13 maps to Ace through King
-      for($i = 0; $i < 52; $i++)
-        $cards["$i"] = array("value"=>$i%13+1, "suit"=>(int)($i/13));
-      var_dump($cards);//test line
-
-      echo "<br><br>";
-      
-
-      $playerNames = array("Thanos", "Pepe", "Ainz", "God"); //player names
-      
-      $player1 = array(); //players have: hands(array of cards), and name
-      $player2 = array();
-      $player3 = array();
-      $player4 = array();
       
       
-      function showCard($num, $suit){
-                echo "<img src= 'img/$suit/$num' alt = '$suit $num'>";
+      function showCard($value, $suit){
+                echo "<img src= 'img/$suit/$value' alt = '$suit $value'>";
       }
       
       
@@ -58,9 +77,9 @@
         }
       }
       
-      function getScore($hand){
+      function getScore($hand){//NEED TO FIX FOREACH LOOPS
         $score = 0;
-        foreach($array as $card){
+        foreach($hand as $card){
           $score += $card["value"];
         }
         return $score;
@@ -97,12 +116,12 @@
             
             //player hand, in the middle
             echo "<div class='row'>";
-            showHand($i);
+            showHand($playerHands[$playerNames[$i]]);
             echo "</div>";
             
             //score, on the right
             echo "<div class='row'>";
-            $score.$i = getScore(($player . ($i)));
+            $score.$i = getScore(($playerHands[$playerNames[$i]]));
             echo "Score: $score.$i";
             echo "</div>";
           echo "</div>";
@@ -111,14 +130,8 @@
       
       
       //Play Silverjack
-      
-      
-      //Print results
-      //Print table of players and their scores
-      printTable();
-      
-      getWinner();
-      
+      play();
+
       //Todo: calculate time to process and display it
       
       

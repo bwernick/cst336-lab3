@@ -30,7 +30,7 @@
       
       $cards = array();//$cards implements value & suit for each card
       //Find the info for a card by knowing its number, applying divison and mod
-      //suit: clubs = 0, diamonds = 1, hearts = 2, spades = 4
+      //suit: clubs = 0, diamonds = 1, hearts = 2, spades = 3
       //value: 1-13 maps to Ace through King
       for($i = 0; $i < 52; $i++)
         $cards["$i"] = array("value"=>$i%13+1, "suit"=>(int)($i/13));
@@ -38,7 +38,7 @@
 
       echo "<br><br>";
       
-      //$playerNames = array("", "", "", ""); //player names
+      $playerNames = array("", "", "", ""); //player names
       
       $player1 = array(); //players have: hands(array of cards), and name
       $player2 = array();
@@ -50,14 +50,6 @@
                 echo "<img src= 'img/$suit/$num' alt = '$suit $num'>";
       }
       
-      function getHand(){
-        $numCards = rand(4,6);  //Random amount of cards to draw
-        for($i=0;$i<$numCards;$i++){
-          $num = array_pop($shuff); //get random card, remove card number to prevent duplicates
-          $hand["$i"] = $cards[$num];  
-        }
-        return $hand;
-      }
       
       function showHand($hand){
         foreach($hand as $card){  //iterate through whole hand

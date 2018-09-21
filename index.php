@@ -46,7 +46,7 @@
       $player3 = array();
       $player4 = array();
       
-      /*
+      
       function showCard($num, $suit){
                 echo "<img src= 'img/$suit/$num' alt = '$suit $num'>";
       }
@@ -67,23 +67,22 @@
       }
       
       function showPlayer($num, $name){
-        echo "<figure><img src='img/players/$num.png' alt = 'player $num'><figcaption>$Name</figcaption></figure>"; //show player image with name below them
+        echo "<figure><img src='img/players/$name.png' alt = 'player $name'><figcaption>$name</figcaption></figure>"; //show player image with name below them
       }
       
       function getWinner(){
         $scores = array();
-        for($i=1,$i<=4;$i++){
+        for($i=0;$i<4;$i++){
           array_push($scores, getScore($player.$i));
         }
         
         $winner = max($scores);
         
-        for($i=0,$i<4;$i++){
+        for($i=0;$i<4;$i++){
           if($winner == $scores[$i]){
             $i++;
-            echo "<h2>Player $i is the winner!</h2>"
+            echo "<h2>Player $i is the winner!</h2>";
           }
-          
         }
         
       }
@@ -121,7 +120,7 @@
       getWinner();
       
       //Todo: calculate time to process and display it
-      */
+      
       
     ?>
     

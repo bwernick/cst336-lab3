@@ -47,8 +47,8 @@
       $player4 = array();
       
       
-      function showCard($num, $suit){
-                echo "<img src= 'img/$suit/$num' alt = '$suit $num'>";
+      function showCard($value, $suit){
+          echo "<img src= 'img/$suit/$value' alt = '$suit $value'>";
       }
       
       
@@ -60,7 +60,7 @@
       
       function getScore($hand){
         $score = 0;
-        foreach($array as $card){
+        foreach($hand as $card){
           $score += $card["value"];
         }
         return $score;

@@ -12,6 +12,8 @@
     <hr>
     
     <?php
+      $time_start = microtime(true); //Start of script run
+    
       //Set up deck order and cards array
       $shuff = array();//$shuff determines the order in which cards will be drawn
       for($i = 0; $i < 52; $i++)
@@ -121,7 +123,9 @@
       
       //Todo: calculate time to process and display it
       
-      
+      $time_end = microtime(true);  //end of script run
+      $execution_time = ($time_end - $time_start)/60; //get executiion time in minutes and seconds
+      echo "<h3>Execution Time:" . $execution_time . "Mins</h3> <br><br>";  //Print execution time
     ?>
     
     <h3><a href="index.php">Play Again?</a></h3>

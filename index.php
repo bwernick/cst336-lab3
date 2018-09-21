@@ -42,17 +42,14 @@
         
   
         $playerNames = array("Thanos", "Pepe", "Ainz", "God"); //player names
-        $Thanos = array();
-        $Pepe = array();
-        $Ainz = array();
-        $God = array();
-        $playerHands = array($Thanos, $Pepe, $Ainz, $God);
+
+        $playerHands = array("Thanos"=>array(), "Pepe"=>array(),"Ainz"=>array(),"God"=>array());
         
         //Deal hands
         $shuffCount = 0;
         for($i = 0; $i < 4; $i++){
           while(getScore($playerHands[$playerNames[$i]]) < 37){
-            array_push($playerHands[$playerNames[$i]], $cards[$shuff[$shuffCount]]);
+            array_push($playerHands[$playerNames[$i]],$cards[$shuff[$shuffCount]]);
             $shuffCount++;
           }
         }
@@ -74,15 +71,15 @@
       
       
       function showHand($hand){
-        foreach($hand as $card){  //iterate through whole hand
-          showCard($card["value"], $card["suit"]);  //print each card in hand
+        for($i = 0; $i < count($hand); $i++){  //iterate through whole hand
+          showCard($hand[$i["value"]], $hand[$i["suit"]]);  //print each card in hand
         }
       }
       
       function getScore($hand){//NEED TO FIX FOREACH LOOPS
         $score = 0;
-        foreach($hand as $card){
-          $score += $card["value"];
+        for($i = 0; i < count($hand); $i++){
+          $score += $hand[$i["value"]];
         }
         return $score;
       }

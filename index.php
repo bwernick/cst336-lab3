@@ -35,6 +35,7 @@
       for($i = 0; $i < 52; $i++)
         $cards["$i"] = array("value"=>$i%13, "suit"=>(int)($i/13)+1);
       var_dump($cards);//test line
+
       echo "<br><br>";
       
       //$playerNames = array("", "", "", ""); //player names
@@ -46,7 +47,6 @@
       
       /*
       function showCard($num, $suit){
-                $num++;
                 echo "<img src= 'img/$suit/$num' alt = '$suit $num'>";
       }
       

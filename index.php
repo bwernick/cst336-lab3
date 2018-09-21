@@ -63,11 +63,13 @@
         
         getWinner();
         
+
+    
       }
       
       
       function showCard($value, $suit){
-                echo "<img src= 'img/$suit/$value' alt = '$suit $value'>";
+        echo "<img src= 'img/$suit/$value' alt = '$suit $value'>";
       }
       
       
@@ -130,11 +132,14 @@
       
       
       //Play Silverjack
+      $time_start = microtime(true); //Start of script run
       play();
 
       //Todo: calculate time to process and display it
       
-      
+      $time_end = microtime(true);  //end of script run
+      $execution_time = ($time_end - $time_start)/60; //get executiion time in minutes and seconds
+      echo "<h3>Execution Time:" . $execution_time . "Mins</h3> <br><br>";  //Print execution time
     ?>
     
     <h3><a href="index.php">Play Again?</a></h3>

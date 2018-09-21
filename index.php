@@ -30,10 +30,10 @@
       
       $cards = array();//$cards implements value & suit for each card
       //Find the info for a card by knowing its number, applying divison and mod
-      //suit: clubs = 1, diamonds = 2, hearts = 3, spades = 4
+      //suit: clubs = 0, diamonds = 1, hearts = 2, spades = 4
       //value: 1-13 maps to Ace through King
       for($i = 0; $i < 52; $i++)
-        $cards["$i"] = array("value"=>$i%13, "suit"=>(int)($i/13)+1);
+        $cards["$i"] = array("value"=>$i%13+1, "suit"=>(int)($i/13));
       var_dump($cards);//test line
 
       echo "<br><br>";

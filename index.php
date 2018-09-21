@@ -38,7 +38,7 @@
 
       echo "<br><br>";
       
-      //$playerNames = array("", "", "", ""); //player names
+      $playerNames = array("Thanos", "Pepe", "Ainz", "God"); //player names
       
       $player1 = array(); //players have: hands(array of cards), and name
       $player2 = array();

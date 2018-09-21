@@ -30,10 +30,96 @@
       var_dump($cards);//test line
       echo "<br><br>";
       
+      //$playerNames = array("", "", "", ""); //player names
+      
+      $player1 = array(); //players have: hands(array of cards), and name
+      $player2 = array();
+      $player3 = array();
+      $player4 = array();
+      
+      /*
+      function showCard($num, $suit){
+                $num++;
+                echo "<img src= 'img/$suit/$num' alt = '$suit $num'>";
+      }
+      
+      function getHand(){
+        $numCards = rand(4,6);  //Random amount of cards to draw
+        for($i=0;$i<$numCards;$i++){
+          $num = array_pop($shuff); //get random card, remove card number to prevent duplicates
+          $hand["$i"] = $cards[$num];  
+        }
+        return $hand;
+      }
+      
+      function showHand($hand){
+        foreach($hand as $card){  //iterate through whole hand
+          showCard($card["value"], $card["suit"]);  //print each card in hand
+        }
+      }
+      
+      function getScore($hand){
+        $score = 0;
+        foreach($array as $card){
+          $score += $card["value"];
+        }
+        return $score;
+      }
+      
+      function showPlayer($num, $name){
+        echo "<figure><img src='img/players/$num.png' alt = 'player $num'><figcaption>$Name</figcaption></figure>"; //show player image with name below them
+      }
+      
+      function getWinner(){
+        $scores = array();
+        for($i=1,$i<=4;$i++){
+          array_push($scores, getScore($player.$i));
+        }
+        
+        $winner = max($scores);
+        
+        for($i=0,$i<4;$i++){
+          if($winner == $scores[$i]){
+            $i++;
+            echo "<h1>Player $i is the winner!</h1>"
+          }
+          
+        }
+        
+      }
+      
+      function printTable(){
+        for($i=0;$i<4;$i++){
+          echo "<div class='col'>"; //one player per loop
+            //player icon and name, to be on the left
+            echo "<div class='row'>";
+            showPlayer($i+1, $playerNames[$i]);
+            echo "</div>";
+            
+            //player hand, in the middle
+            echo "<div class='row'>";
+            showHand($i+1);
+            echo "</div>";
+            
+            //score, on the right
+            echo "<div class='row'>";
+            $score.$i = getScore(($player . ($i+1)));
+            echo "Score: $score.$i";
+            echo "</div>";
+          echo "</div>";
+        }  
+      }
+      
+      
       //Play Silverjack
       
-      //Print results
       
+      //Print results
+      //Print table of players and their scores
+      printTable();
+      
+      getWinner();
+      */
     ?>
     <h1><a href="index.php">Play Again!</a></h1>
   </body>

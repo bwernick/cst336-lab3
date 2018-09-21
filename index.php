@@ -2,8 +2,15 @@
 <html lang=en>
   <head>
     <title>Silverjack!</title>
+    <link rel="stylesheet" href="styles.css">
   </head>
   <body>
+    <header>
+      <h1>Silverjack!</h1>
+      <br><br>
+    </header>
+    <hr>
+    
     <?php
       //Set up deck order and cards array
       $shuff = array();//$shuff determines the order in which cards will be drawn
@@ -81,7 +88,7 @@
         for($i=0,$i<4;$i++){
           if($winner == $scores[$i]){
             $i++;
-            echo "<h1>Player $i is the winner!</h1>"
+            echo "<h2>Player $i is the winner!</h2>"
           }
           
         }
@@ -119,9 +126,19 @@
       printTable();
       
       getWinner();
+      
+      //Todo: calculate time to process and display it
       */
+      
     ?>
-    <h1><a href="index.php">Play Again!</a></h1>
+    
+    <h3><a href="index.php">Play Again?</a></h3>
+    
+    <br><br>
+    <hr>
+    <footer>
+      
+    </footer>
   </body>
   
 </html>

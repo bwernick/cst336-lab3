@@ -42,15 +42,15 @@
         
         $playerNames = array("Thanos", "Pepe", "Ainz", "God"); //player names
 
-        $playerHands = array("Thanos"=>array(), "Pepe"=>array(),"Ainz"=>array(),"God"=>array());
+        $playerHands = array($Thanos=>array(), $Pepe=>array(),$Ainz=>array(),$God=>array());
         
         //Deal hands
         $shuffCount = 0;
         for($i = 0; $i < 4; $i++){//For each player, draw cards until cutoff
-          /*while(getScore($playerHands[$playerNames[$i]]) < 37){//THESE LINES PREVENT PAGE FROM LOADING
+          while(getScore($playerHands[$playerNames[$i]]) < 37){//THESE LINES PREVENT PAGE FROM LOADING
             array_push($playerHands[$playerNames[$i]],$cards[$shuff[$shuffCount]]);
             $shuffCount++;
-          }*/
+          }
           echo "Player $playerNames[$i] draws cards";//Test line
         }
               
@@ -78,6 +78,7 @@
         for($i = 0; i < count($hand); $i++){
           $score += $hand[$i["value"]];
         }
+        print("$score is the current score <br>");
         return $score;
       }
       

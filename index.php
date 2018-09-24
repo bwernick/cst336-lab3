@@ -27,8 +27,7 @@
         //Set up deck order and cards array
         for($i = 1; $i <= 52; $i++)
           $shuff[] = $i;
-        var_dump($shuff);//test line
-        echo "<br><br>";
+
         
         for($i = 0; $i < 52; $i++){//Fisher-Yates shuffle
           $j = rand(0,51);
@@ -36,7 +35,6 @@
           $shuff[$i] = $shuff[$j];
           $shuff[$j] = $temp;
         }
-        
         var_dump($shuff);//test line
         echo "<br><br>";
         
@@ -95,18 +93,19 @@
         }
       }
       
-      function getScore($hand){
+      function getScore($name){
         global $shuff;
         global $cards;
         global $playerNames;
         global $playerHands;
         
         $score = 0;
-        echo "count($hand)";
-        /*for($i = 0; i < count($hand); $i++){
-          $score += $cards[$hand[$i]]["value"];
-        }*/
-        print("$score is the current score <br>");
+        echo count($playerHands[$name]);
+        for($i = 0; $i < count($playerHands[$name]); $i++){
+          $score += $cards[$playerHands[$name[$i]]]["value"];
+          //break;
+        }
+        print("<br> $score is the current score <br>");
         return $score;
       }
       

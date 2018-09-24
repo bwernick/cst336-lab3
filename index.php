@@ -94,7 +94,7 @@
         }
       }
       
-      function getScore($hand, $cards){
+      function getScore($hand){
         global $shuff;
         global $cards;
         global $playerNames;
@@ -112,7 +112,7 @@
         echo "<figure><img src='img/players/$name.png' alt = 'player $name'><figcaption>$name</figcaption></figure>"; //show player image with name below them
       }
       
-      function getWinner($playerNames, $playerHands){
+      function getWinner(){
         global $shuff;
         global $cards;
         global $playerNames;
@@ -134,7 +134,7 @@
         
       }
       
-      function printTable($playerNames, $playerHands){//INFINITE LOOP OF PEPE
+      function printTable(){  //INFINITE LOOP OF PEPE
         global $shuff;
         global $cards;
         global $playerNames;

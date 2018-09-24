@@ -41,17 +41,26 @@
         echo "<br><br>";
         
         $playerNames = array("Thanos", "Pepe", "Ainz", "God"); //player names
-
-        $playerHands = array($Thanos=>array(), $Pepe=>array(),$Ainz=>array(),$God=>array());
+        $Thanos = array();
+        $Pepe = array();
+        $Ainz = array();
+        $God = array();
+        $playerHands = array("Thanos"=>$Thanos, "Pepe"=>$Pepe, "Ainz"=>$Ainz, "God"=>$God);
         
         //Deal hands
         $shuffCount = 0;
+        echo "Start of for/while";
         for($i = 0; $i < 4; $i++){//For each player, draw cards until cutoff
-          while(getScore($playerHands[$playerNames[$i]]) < 37){//THESE LINES PREVENT PAGE FROM LOADING
-            array_push($playerHands[$playerNames[$i]],$cards[$shuff[$shuffCount]]);
+          $curName = $playerNames[$i];
+          echo "$curName is currently drawing to $playerHands[$curName] <br>";
+          while(getScore($playerHands[$curName], $cards) < 37){//THESE LINES PREVENT PAGE FROM LOADING
+            echo "Start of while";
+            $playerHands[$curName][] .= $shuff[$shuffCount];
             $shuffCount++;
+            echo "End of while";
+            break;
           }
-          echo "Player $playerNames[$i] draws cards";//Test line
+          echo "Player $playerNames[$i] draws cards <br>";//Test line
         }
               
         //Print results
@@ -73,10 +82,10 @@
         }
       }
       
-      function getScore($hand){
+      function getScore($hand, $cards){
         $score = 0;
         for($i = 0; i < count($hand); $i++){
-          $score += $hand[$i["value"]];
+          $score += $cards[$hand[$i]]['value'];
         }
         print("$score is the current score <br>");
         return $score;

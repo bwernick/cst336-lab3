@@ -44,7 +44,7 @@
         //suit: clubs = 0, diamonds = 1, hearts = 2, spades = 3 --> Translates to folder names
         //value: 1-13 maps to Ace through King --> Translates to .png names
         for($i = 0; $i < 52; $i++)
-          $cards["$i"] = array("value"=>$i%13+1, "suit"=>(int)($i/13));
+          $cards[$i] = array("value"=>$i%13+1, "suit"=>(int)($i/13));
           
         var_dump($cards);//test line
         echo "<br><br>";
@@ -60,7 +60,7 @@
         for($i = 0; $i < 4; $i++){//For each player, draw cards until cutoff
           $curName = $playerNames[$i];
           echo "$curName is currently drawing to $playerHands[$curName] <br>";
-          /*while(getScore($playerHands[$curName], $cards) < 37){//THESE LINES PREVENT PAGE FROM LOADING
+          /*while(getScore($playerHands[$curName]) < 37){//THESE LINES PREVENT PAGE FROM LOADING
             echo "Start of while";
             $playerHands[$curName] = $shuff[$shuffCount];
             $shuffCount++;
@@ -72,9 +72,9 @@
               
         //Print results
         //Print table of players and their scores
-        printTable($playerNames, $playerHands);
+        //printTable();
         
-        getWinner($playerNames, $playerHands);
+        //getWinner();
         
       }
       
@@ -112,7 +112,7 @@
         echo "<figure><img src='img/players/$name.png' alt = 'player $name'><figcaption>$name</figcaption></figure>"; //show player image with name below them
       }
       
-      function getWinner(){
+      /*function getWinner(){
         global $shuff;
         global $cards;
         global $playerNames;
@@ -154,12 +154,12 @@
             
             //score, on the right
             echo "<div class='row'>";
-            $score.$i = getScore($playerHands[$playerNames[$i]], $cards);
+            $score.$i = getScore($playerHands[$playerNames[$i]]);
             echo "Score: $score.$i";
             echo "</div>";
           echo "</div>";
         }  
-      }
+      }*/
       
       //Play Silverjack
       $time_start = microtime(true); //Start of script run

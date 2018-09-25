@@ -13,7 +13,7 @@
     
     <?php
     $shuff = array(); //$shuff determines the order in which cards will be drawn
-    $cards = array();//$cards implements value & suit for each card
+    $cards = array();//$cards implements value & suit for each card from shuff
     $playerNames = array("Thanos", "Pepe", "Ainz", "God"); //player names
     $playerHands = array("Thanos"=>$Thanos, "Pepe"=>$Pepe, "Ainz"=>$Ainz, "God"=>$God);
     
@@ -58,9 +58,9 @@
         for($i = 0; $i < 4; $i++){//For each player, draw cards until cutoff
           $curName = $playerNames[$i];
           echo "$curName is currently drawing <br>";
-          while(getScore($curName) < 37 || $shuffCount > 10){//THESE LINES PREVENT PAGE FROM LOADING
+          while(getScore($curName) < 37 || $shuffCount < 10){//THESE LINES PREVENT PAGE FROM LOADING
             echo "Start of while";
-            $playerHands[$curName] = $shuff[$shuffCount];
+            $playerHands[$curName][] = $shuff[$shuffCount];
             $shuffCount++;
             echo "End of while";
             var_dump( $playerHands[$curName]);

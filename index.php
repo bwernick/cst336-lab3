@@ -24,16 +24,19 @@
         global $playerNames;
         global $playerHands;
         
+        shuffle($playerNames);
+        
         //Set up deck order and cards array
         for($i = 1; $i <= 52; $i++)
           $shuff[] = $i;
         
-        for($i = 0; $i < 52; $i++){//Fisher-Yates shuffle
+        shuffle($shuff);
+        /*for($i = 0; $i < 52; $i++){//Fisher-Yates shuffle
           $j = rand(0,51);
           $temp = $shuff[$i];
           $shuff[$i] = $shuff[$j];
           $shuff[$j] = $temp;
-        }
+        }*/
         //var_dump($shuff);//test line
         echo "<br><br>";
         
@@ -130,6 +133,8 @@
           if($max == $scores[$i]){
             $i++;
             echo "<h2>Player $i is the winner!</h2>";
+            $i--;
+            echo "<h3>Score: $scores[$i]</h3>";
           }
         }
         

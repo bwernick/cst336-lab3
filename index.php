@@ -58,7 +58,7 @@
         for($i = 0; $i < 4; $i++){//For each player, draw cards until cutoff
           $curName = $playerNames[$i];
           echo "$curName is currently drawing <br>";
-          while(getScore($curName) < 37){//THESE LINES PREVENT PAGE FROM LOADING
+          while(getScore($curName) < 37){//FIXED
             $playerHands[$curName][] = $shuff[$shuffCount];
             $shuffCount++;
             //var_dump($playerHands[$curName]);
@@ -74,7 +74,7 @@
       
       
       function showCard($value, $suit){
-        echo "<img src= 'img/$suit/$value' alt = '$suit $value'>";
+        echo "<img src= 'img/$suit/$value' alt = 'Suit:$suit Value:$value'>";
       }
       
       function showHand($hand){
@@ -140,9 +140,8 @@
         
         $scores = array();
         for($i=0;$i<4;$i++){
-          array_push($scores, getScore($player.$i));
+          array_push($scores, getScore($playerNames[$i]));
         }
-        
         
         for($i=0;$i<4;$i++){
           $name = $playerNames[$i];
@@ -161,7 +160,7 @@
           echo "<div class='row'>";
 
           array_push($scores, getScore($name));
-          echo "Score: $score.$i";
+          echo "Score: $scores[$i]";
           echo "</div>";
           echo "</div>";
         }

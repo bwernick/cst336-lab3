@@ -43,7 +43,7 @@
         for($i = 0; $i < 52; $i++)
           $cards[$i] = array("value"=>($i%13)+1, "suit"=>(int)($i/13));
           
-        var_dump($cards);//test line
+        //var_dump($cards);//test line
         echo "<br><br>";
         
         $Thanos = array();
@@ -73,7 +73,6 @@
       
       
       function showCard($value, $suit){
-        $value++;
         echo "<div class='cards'><img src='img/$suit/$value.png' alt='Suit: $suit Value: $value' style='width=75px'></div>";
       }
       

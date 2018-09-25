@@ -27,7 +27,6 @@
         //Set up deck order and cards array
         for($i = 1; $i <= 52; $i++)
           $shuff[] = $i;
-
         
         for($i = 0; $i < 52; $i++){//Fisher-Yates shuffle
           $j = rand(0,51);
@@ -97,25 +96,16 @@
         global $playerHands;
         
         $score = 0;
-<<<<<<< HEAD
-        //echo "count($hand)";
-        for($i = 0; $i < count($hand); $i++){ //ISSUE: infinite looping for loop
-          //$score += $cards[$hand[$i]][$i]["value"];
-          echo "in the for loop";
-        }
-        print("$score is the current score <br>");
-=======
         //echo count($playerHands[$name]);
         $playersHand = $playerHands[$name];
-        var_dump($playersHand);
+        //var_dump($playersHand);
         for($i = 0; $i < count($playersHand); $i++){
           
           $cardIndex = $playersHand[$i];
-          var_dump($cardIndex);
+          //var_dump($cardIndex);
           $score += $cards[$cardIndex]["value"];
         }
         echo"<br> $score is the current score <br>";
->>>>>>> c5e6b426ca03396288a36159766af6d7df4df187
         return $score;
       }
       
@@ -123,30 +113,21 @@
         echo "<figure><img src='img/players/$name.png' alt = 'player $name'><figcaption>$name</figcaption></figure>"; //show player image with name below them
       }
       
-<<<<<<< HEAD
-      //Should work when getScore() works
-      /*function getWinner(){
-=======
       function getWinner($scores){
->>>>>>> c5e6b426ca03396288a36159766af6d7df4df187
         global $shuff;
         global $cards;
         global $playerNames;
         global $playerHands;
         
-<<<<<<< HEAD
-        $scores = array();
-        for($i=0;$i<4;$i++){
-          array_push($scores, getScore($playerHands[$i]));
+        $max = 0;
+        for($i = 0; $i < 4; $i++){
+          if($scores[$i] > $max && $scores[$i] <= 42){
+            $max = $scores[$i];
+          }
         }
         
-=======
-
->>>>>>> c5e6b426ca03396288a36159766af6d7df4df187
-        $winner = max($scores);
-        
         for($i=0;$i<4;$i++){
-          if($winner == $scores[$i]){
+          if($max == $scores[$i]){
             $i++;
             echo "<h2>Player $i is the winner!</h2>";
           }
@@ -180,7 +161,6 @@
           
           //score, on the right
           echo "<div class='row'>";
-
           array_push($scores, getScore($name));
           echo "Score: $scores[$i]";
           echo "</div>";

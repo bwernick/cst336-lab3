@@ -13,7 +13,7 @@
     
     <?php
     $shuff = array(); //$shuff determines the order in which cards will be drawn
-    $cards = array();//$cards implements value & suit for each card
+    $cards = array();//$cards implements value & suit for each card from shuff
     $playerNames = array("Thanos", "Pepe", "Ainz", "God"); //player names
     $playerHands = array("Thanos"=>$Thanos, "Pepe"=>$Pepe, "Ainz"=>$Ainz, "God"=>$God);
     
@@ -27,8 +27,7 @@
         //Set up deck order and cards array
         for($i = 1; $i <= 52; $i++)
           $shuff[] = $i;
-        var_dump($shuff);//test line
-        echo "<br><br>";
+
         
         for($i = 0; $i < 52; $i++){//Fisher-Yates shuffle
           $j = rand(0,51);
@@ -36,17 +35,16 @@
           $shuff[$i] = $shuff[$j];
           $shuff[$j] = $temp;
         }
-        
-        var_dump($shuff);//test line
+        //var_dump($shuff);//test line
         echo "<br><br>";
         
         //Find the info for a card by knowing its number, applying divison and mod
         //suit: clubs = 0, diamonds = 1, hearts = 2, spades = 3 --> Translates to folder names
         //value: 1-13 maps to Ace through King --> Translates to .png names
         for($i = 0; $i < 52; $i++)
-          $cards[$i] = array("value"=>$i%13+1, "suit"=>(int)($i/13));
+          $cards[$i] = array("value"=>$i%13, "suit"=>(int)($i/13));
           
-        var_dump($cards);//test line
+        //var_dump($cards);//test line
         echo "<br><br>";
         
         $Thanos = array();
@@ -56,32 +54,27 @@
         
         //Deal hands
         $shuffCount = 0;
-        echo "Start of for/while <br>";
+        //echo "Start of for/while <br>";
         for($i = 0; $i < 4; $i++){//For each player, draw cards until cutoff
           $curName = $playerNames[$i];
           echo "$curName is currently drawing <br>";
-          while(getScore($curName) < 37 || $shuffCount > 10){//THESE LINES PREVENT PAGE FROM LOADING
-            echo "Start of while";
-            $playerHands[$curName] = $shuff[$shuffCount];
+          while(getScore($curName) < 37){//FIXED
+            $playerHands[$curName][] = $shuff[$shuffCount];
             $shuffCount++;
-            echo "End of while";
-            var_dump( $playerHands[$curName]);
-            //break;
+            //var_dump($playerHands[$curName]);
           }
-          echo "Player $playerNames[$i] draws cards <br>";//Test line
         }
               
-        //Print results
-        //Print table of players and their scores
-        //printTable();
+        //Print results, return array of scores, feeds to getWinner and winner is got
+        getWinner(printTable());
         
-        //getWinner();
+        
         
       }
       
       
       function showCard($value, $suit){
-        echo "<img src= 'img/$suit/$value' alt = '$suit $value'>";
+        echo "<img src= 'img/$suit/$value' alt = 'Suit:$suit Value:$value'>";
       }
       
       function showHand($hand){
@@ -89,25 +82,40 @@
         global $cards;
         global $playerNames;
         global $playerHands;
-        
+        var_dump($hand);
         for($i = 0; $i < count($hand); $i++){  //iterate through whole hand
-          showCard($hand[$i["value"]], $hand[$i["suit"]]);  //print each card in hand
+          $card = $hand[$i];
+          var_dump($card);
+          showCard($card["value"], $card["suit"]);  //print each card in hand
         }
       }
       
-      function getScore($hand){
+      function getScore($name){
         global $shuff;
         global $cards;
         global $playerNames;
         global $playerHands;
         
         $score = 0;
+<<<<<<< HEAD
         //echo "count($hand)";
         for($i = 0; $i < count($hand); $i++){ //ISSUE: infinite looping for loop
           //$score += $cards[$hand[$i]][$i]["value"];
           echo "in the for loop";
         }
         print("$score is the current score <br>");
+=======
+        //echo count($playerHands[$name]);
+        $playersHand = $playerHands[$name];
+        var_dump($playersHand);
+        for($i = 0; $i < count($playersHand); $i++){
+          
+          $cardIndex = $playersHand[$i];
+          var_dump($cardIndex);
+          $score += $cards[$cardIndex]["value"];
+        }
+        echo"<br> $score is the current score <br>";
+>>>>>>> c5e6b426ca03396288a36159766af6d7df4df187
         return $score;
       }
       
@@ -115,18 +123,26 @@
         echo "<figure><img src='img/players/$name.png' alt = 'player $name'><figcaption>$name</figcaption></figure>"; //show player image with name below them
       }
       
+<<<<<<< HEAD
       //Should work when getScore() works
       /*function getWinner(){
+=======
+      function getWinner($scores){
+>>>>>>> c5e6b426ca03396288a36159766af6d7df4df187
         global $shuff;
         global $cards;
         global $playerNames;
         global $playerHands;
         
+<<<<<<< HEAD
         $scores = array();
         for($i=0;$i<4;$i++){
           array_push($scores, getScore($playerHands[$i]));
         }
         
+=======
+
+>>>>>>> c5e6b426ca03396288a36159766af6d7df4df187
         $winner = max($scores);
         
         for($i=0;$i<4;$i++){
@@ -144,26 +160,34 @@
         global $playerNames;
         global $playerHands;
         
+        $scores = array();
         for($i=0;$i<4;$i++){
+          array_push($scores, getScore($playerNames[$i]));
+        }
+        
+        for($i=0;$i<4;$i++){
+          $name = $playerNames[$i];
           echo "<div class='col'>"; //one player per loop
-            //player icon and name, to be on the left
-            echo "<div class='row'>";
-            showPlayer($playerNames[$i]);
-            echo "</div>";
-            
-            //player hand, in the middle
-            echo "<div class='row'>";
-            showHand($playerHands[$playerNames[$i]]);
-            echo "</div>";
-            
-            //score, on the right
-            echo "<div class='row'>";
-            $score.$i = getScore($playerHands[$playerNames[$i]]);
-            echo "Score: $score.$i";
-            echo "</div>";
+          //player icon and name, to be on the left
+          echo "<div class='row'>";
+          showPlayer($name);
           echo "</div>";
-        }  
-      }*/
+          
+          //player hand, in the middle
+          echo "<div class='row'>";
+          showHand($playerHands[$name]);
+          echo "</div>";
+          
+          //score, on the right
+          echo "<div class='row'>";
+
+          array_push($scores, getScore($name));
+          echo "Score: $scores[$i]";
+          echo "</div>";
+          echo "</div>";
+        }
+        return $scores;
+      }
       
       //Play Silverjack
       $time_start = microtime(true); //Start of script run

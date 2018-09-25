@@ -41,9 +41,9 @@
         //suit: clubs = 0, diamonds = 1, hearts = 2, spades = 3 --> Translates to folder names
         //value: 1-13 maps to Ace through King --> Translates to .png names
         for($i = 0; $i < 52; $i++)
-          $cards[$i] = array("value"=>$i%13, "suit"=>(int)($i/13));
+          $cards[$i] = array("value"=>($i%13)+1, "suit"=>(int)($i/13));
           
-        //var_dump($cards);//test line
+        var_dump($cards);//test line
         echo "<br><br>";
         
         $Thanos = array();
@@ -73,6 +73,7 @@
       
       
       function showCard($value, $suit){
+        $value++;
         echo "<div class='cards'><img src='img/$suit/$value.png' alt='Suit: $suit Value: $value' style='width=75px'></div>";
       }
       
@@ -135,7 +136,8 @@
         
       }
       
-      function printTable(){  //INFINITE LOOP OF PEPE
+      //echos divs for use as a table for players, cards, and score
+      function printTable(){
         global $shuff;
         global $cards;
         global $playerNames;
@@ -176,7 +178,7 @@
       
       $time_end = microtime(true);  //end of script run
       $execution_time = ($time_end - $time_start)/60; //get execution time in minutes and seconds
-      echo "<h3>Execution Time:" . $execution_time . "Mins</h3> <br><br>";  //Print execution time
+      echo "<h3>Execution Time:" . $execution_time . " Mins</h3> <br><br>";  //Print execution time
     ?>
     
     <h3><a href="index.php">Play Again?</a></h3>

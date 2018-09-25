@@ -73,7 +73,7 @@
       
       
       function showCard($value, $suit){
-        echo "<img src='img/$suit/$value' alt='Suit: $suit Value: $value'>";
+        echo "<img src='img/$suit/$value.png' alt='Suit: $suit Value: $value' style='width=75px'>";
       }
       
       function showHand($hand){
@@ -150,17 +150,17 @@
           $name = $playerNames[$i];
           echo "<div class='table'>"; //one player per loop
             //player icon and name, to be on the left
-            echo "<div class='cell1'>";
+            echo "<div class='cell'>";
             showPlayer($name);
             echo "</div>";
             
             //player hand, in the middle
-            echo "<div class='cell2'>";
+            echo "<div class='cell'>";
             showHand($playerHands[$name]);
             echo "</div>";
             
             //score, on the right
-            echo "<div class='cell3'>";
+            echo "<div class='cell'>";
             array_push($scores, getScore($name));
             echo "<b>Score: $scores[$i]</b>";
             echo "</div>";

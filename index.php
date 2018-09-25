@@ -105,12 +105,12 @@
           //var_dump($cardIndex);
           $score += $cards[$cardIndex]["value"];
         }
-        echo"<br> $score is the current score <br>";
+        //echo"<br> $score is the current score <br>";
         return $score;
       }
       
       function showPlayer($name){
-        echo "<figure><img src='img/players/$name.png' alt = 'player $name'><figcaption>$name</figcaption></figure>"; //show player image with name below them
+        echo "<figure><img src='img/players/$name.png' alt = 'player $name'><figcaption><b>$name</b></figcaption></figure>"; //show player image with name below them
       }
       
       function getWinner($scores){
@@ -148,22 +148,22 @@
         
         for($i=0;$i<4;$i++){
           $name = $playerNames[$i];
-          echo "<div class='col'>"; //one player per loop
-          //player icon and name, to be on the left
-          echo "<div class='row'>";
-          showPlayer($name);
-          echo "</div>";
-          
-          //player hand, in the middle
-          echo "<div class='row'>";
-          showHand($playerHands[$name]);
-          echo "</div>";
-          
-          //score, on the right
-          echo "<div class='row'>";
-          array_push($scores, getScore($name));
-          echo "Score: $scores[$i]";
-          echo "</div>";
+          echo "<div class='table'>"; //one player per loop
+            //player icon and name, to be on the left
+            echo "<div class='cell1'>";
+            showPlayer($name);
+            echo "</div>";
+            
+            //player hand, in the middle
+            echo "<div class='cell2'>";
+            showHand($playerHands[$name]);
+            echo "</div>";
+            
+            //score, on the right
+            echo "<div class='cell3'>";
+            array_push($scores, getScore($name));
+            echo "<b>Score: $scores[$i]</b>";
+            echo "</div>";
           echo "</div>";
         }
         return $scores;

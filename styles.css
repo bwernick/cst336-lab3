@@ -1,17 +1,27 @@
 body {
     border-color:black;
     border-radius:20;
-}
-
-div .col{
+    
     display: flex;
     flex-direction: column;
-    border: 1px solid black;
+    margin: 0;
 }
 
-div .row{
+.table{
     display: flex;
-    flex-direction: row;
+    flex: 1;
+}
+
+.cell1{
+    text-align: center;
+    font-size: 18px;
+    
+}
+
+.cell3{
+    text-align: center;
+    font-size: 24px;
+    
 }
 
 h1{
@@ -20,6 +30,7 @@ h1{
 }
 
 h2{
+    text-align: center;
     font-size: 30px;
 }
 
@@ -27,3 +38,15 @@ h3{
     text-align: center;
     font-size: 24px;
 }
+
+img{
+    width:200px;
+}
+
+
+
+
+
+
+
+

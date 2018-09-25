@@ -73,7 +73,7 @@
       
       
       function showCard($value, $suit){
-        echo "<img src= 'img/$suit/$value' alt = 'Suit:$suit Value:$value'>";
+        echo "<img src='img/$suit/$value' alt='Suit: $suit Value: $value'>";
       }
       
       function showHand($hand){
@@ -85,7 +85,7 @@
         for($i = 0; $i < count($hand); $i++){  //iterate through whole hand
           $card = $hand[$i];
           var_dump($card);
-          showCard($card["value"], $card["suit"]);  //print each card in hand
+          showCard($cards[$card]["value"], $cards[$card]["suit"]);  //print each card in hand
         }
       }
       

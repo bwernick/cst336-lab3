@@ -102,10 +102,11 @@
         global $playerHands;
         
         $score = 0;
-        echo "count($hand)";
-        /*for($i = 0; i < count($hand); $i++){
-          $score += $cards[$hand[$i]]["value"];
-        }*/
+        //echo "count($hand)";
+        for($i = 0; $i < count($hand); $i++){ //ISSUE: infinite looping for loop
+          //$score += $cards[$hand[$i]][$i]["value"];
+          echo "in the for loop";
+        }
         print("$score is the current score <br>");
         return $score;
       }
@@ -114,6 +115,7 @@
         echo "<figure><img src='img/players/$name.png' alt = 'player $name'><figcaption>$name</figcaption></figure>"; //show player image with name below them
       }
       
+      //Should work when getScore() works
       /*function getWinner(){
         global $shuff;
         global $cards;
@@ -122,7 +124,7 @@
         
         $scores = array();
         for($i=0;$i<4;$i++){
-          array_push($scores, getScore($player.$i));
+          array_push($scores, getScore($playerHands[$i]));
         }
         
         $winner = max($scores);

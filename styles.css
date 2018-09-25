@@ -38,6 +38,12 @@ figure img{
     display: inline-block;
 }
 
+.cards{
+    position:relative;
+    display: inline-block;
+    float:left;
+    padding:10px;
+}
 
 
 

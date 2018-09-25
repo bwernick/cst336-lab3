@@ -5,6 +5,9 @@ body {
     display: flex;
     flex-direction: column;
     margin: 0;
+    
+    background-color: #cccccc;
+    background-image: linear-gradient(slategrey, white);
 }
 
 .table{
@@ -12,10 +15,22 @@ body {
     flex: 1;
 }
 
-.cell{
-    flex: 33.33%;
+.playerCell{
+    flex: 30%;
     text-align: center;
     font-size: 18px;
+}
+
+.cardCell{
+    flex: 50%;
+    text-align: center;
+    font-size: 18px;
+}
+
+.scoreCell{
+    flex: 20%;
+    text-align: center;
+    font-size: 28px;
 }
 
 h1{

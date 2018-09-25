@@ -150,17 +150,17 @@
           $name = $playerNames[$i];
           echo "<div class='table'>"; //one player per loop
             //player icon and name, to be on the left
-            echo "<div class='cell'>";
+            echo "<div class='playerCell'>";
             showPlayer($name);
             echo "</div>";
             
             //player hand, in the middle
-            echo "<div class='cell'>";
+            echo "<div class='cardCell'>";
             showHand($playerHands[$name]);
             echo "</div>";
             
             //score, on the right
-            echo "<div class='cell'>";
+            echo "<div class='scoreCell'>";
             array_push($scores, getScore($name));
             echo "<b>Score: $scores[$i]</b>";
             echo "</div>";

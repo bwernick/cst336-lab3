@@ -27,7 +27,7 @@
         shuffle($playerNames);
         
         //Set up deck order and cards array
-        for($i = 1; $i <= 52; $i++)
+        for($i = 0; $i < 52; $i++)
           $shuff[] = $i;
         
         shuffle($shuff);

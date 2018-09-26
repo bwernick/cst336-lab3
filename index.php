@@ -1,3 +1,7 @@
+<?php
+  session_start();
+  $_SESSION["gamesPlayed"] += 1;
+?>
 <!DOCTYPE html>
 <html lang=en>
   <head>
@@ -12,6 +16,9 @@
     <hr>
     
     <?php
+    
+    //Created by Bradley Wernick and William Sampson
+    
     $shuff = array(); //$shuff determines the order in which cards will be drawn
     $cards = array();//$cards implements value & suit for each card from shuff
     $playerNames = array("Thanos", "Pepe", "Ainz", "God"); //player names
@@ -182,7 +189,13 @@
       
       $time_end = microtime(true);  //end of script run
       $execution_time = ($time_end - $time_start)/60; //get execution time in minutes and seconds
-      echo "<h3>Execution Time:" . $execution_time . " Mins</h3> <br><br>";  //Print execution time
+      echo "<h3>Execution Time: " . $execution_time . " Mins</h3> <br><br>";  //Print execution time
+      
+      $_SESSION["currentTime"] = $execution_time;
+      $_SESSION["totalTime"] += $_SESSION["currentTime"];
+      
+      echo "<h3>Total Games Played: " . $_SESSION["gamesPlayed"] . "</h3> <br><br>";  //Print execution time
+      echo "<h3>Total Execution Time: " . $_SESSION["totalTime"] . " Mins</h3> <br><br>";  //Print execution time
     ?>
     
     <h3><a href="index.php">Play Again?</a></h3>
